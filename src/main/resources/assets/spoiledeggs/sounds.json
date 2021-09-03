@@ -1,0 +1,29 @@
+{
+	"entity.zombie_chicken.ambient": {
+		"sounds": [
+			"spoiledeggs:mob/zombie_chicken/say1",
+			"spoiledeggs:mob/zombie_chicken/say2"
+		],
+		"subtitle": "subtitles.entity.zombie_chicken.ambient"
+	},
+	"entity.zombie_chicken.death": {
+		"sounds": [
+			"spoiledeggs:mob/zombie_chicken/hurt1",
+			"spoiledeggs:mob/zombie_chicken/hurt2"
+		],
+		"subtitle": "subtitles.entity.zombie_chicken.death"
+	},
+	"entity.zombie_chicken.egg": {
+		"sounds": [
+			"mob/chicken/plop"
+		],
+		"subtitle": "subtitles.entity.zombie_chicken.egg"
+	},
+	"entity.zombie_chicken.hurt": {
+		"sounds": [
+			"spoiledeggs:mob/zombie_chicken/hurt1",
+			"spoiledeggs:mob/zombie_chicken/hurt2"
+		],
+		"subtitle": "subtitles.entity.zombie_chicken.hurt"
+	}
+}
