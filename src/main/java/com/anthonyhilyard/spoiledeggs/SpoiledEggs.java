@@ -1,6 +1,7 @@
 package com.anthonyhilyard.spoiledeggs;
 
 import net.minecraftforge.event.LootTableLoadEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.item.ItemExpireEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -10,12 +11,16 @@ import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.RandomValueRange;
 import net.minecraft.loot.functions.SetCount;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.monster.ZombieEntity;
+import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.item.EggItem;
 
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Random;
 
+import com.anthonyhilyard.spoiledeggs.entity.EntityRegistry;
 import com.anthonyhilyard.spoiledeggs.entity.ZombieChickenEntity;
 import com.anthonyhilyard.spoiledeggs.item.ItemRegistry;
 import com.anthonyhilyard.spoiledeggs.item.SpoiledEggItem;
@@ -47,6 +52,27 @@ public class SpoiledEggs
 				{
 					ZombieChickenEntity.spawn(event.getEntityItem().level, event.getEntityItem().getX(), event.getEntityItem().getY(), event.getEntityItem().getZ(), event.getEntityItem().yRot);
 				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public static void onEntityJoined(EntityJoinWorldEvent event)
+	{
+		Entity entity = event.getEntity();
+
+		// If a new chicken jockey was just added to the world...
+		if (entity instanceof ChickenEntity && !(entity instanceof ZombieChickenEntity) && ((ChickenEntity)entity).isChickenJockey)
+		{
+			// Then convert it to a zombie chicken (if configured to do so)!
+			if (SpoiledEggsConfig.INSTANCE.zombieJockeys.get())
+			{
+				ZombieEntity passenger = (ZombieEntity)entity.getPassengers().get(0);
+				ZombieChickenEntity zombieChicken = ((ChickenEntity)entity).convertTo(EntityRegistry.ZOMBIE_CHICKEN, true);
+
+				// Make sure the zombie is properly riding the converted chicken.
+				zombieChicken.setChickenJockey(true);
+				passenger.startRiding(zombieChicken);
 			}
 		}
 	}
