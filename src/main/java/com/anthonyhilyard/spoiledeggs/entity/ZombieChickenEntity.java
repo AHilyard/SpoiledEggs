@@ -1,5 +1,6 @@
 package com.anthonyhilyard.spoiledeggs.entity;
 
+import com.anthonyhilyard.spoiledeggs.SpoiledEggsConfig;
 import com.anthonyhilyard.spoiledeggs.item.ItemRegistry;
 import com.anthonyhilyard.spoiledeggs.sound.SoundRegistry;
 
@@ -100,6 +101,15 @@ public class ZombieChickenEntity extends ChickenEntity
 			this.playSound(SoundRegistry.ZOMBIE_CHICKEN_EGG, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
 			this.spawnAtLocation(ItemRegistry.SPOILED_EGG_ITEM);
 			this.eggTime = this.random.nextInt(6000) + 8000;
+		}
+
+		// Burn in the sun if configured to do so.
+		if (SpoiledEggsConfig.INSTANCE.burnInSunlight.get())
+		{
+			if (this.isAlive() && this.isSunBurnTick())
+			{
+				this.setSecondsOnFire(8);
+			}
 		}
 	}
 

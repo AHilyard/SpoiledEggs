@@ -23,6 +23,7 @@ public class SpoiledEggsConfig
 
 	public final BooleanValue naturalHatching;
 	public final BooleanValue zombieJockeys;
+	public final BooleanValue burnInSunlight;
 
 	public SpoiledEggsConfig(ForgeConfigSpec.Builder build)
 	{
@@ -30,6 +31,7 @@ public class SpoiledEggsConfig
 
 		naturalHatching = build.comment(" If zombie chickens can hatch from old spoiled eggs on the ground.  Turn off if you don't want zombie chickens appearing in chicken farms!").define("natural_hatching", false);
 		zombieJockeys = build.comment(" If chicken jockeys should spawn on zombie chickens instead of normal ones.").define("zombie_jockeys", true);
+		burnInSunlight = build.comment(" If zombie chickens should burn in sunlight like other undead.").define("burn_in_sunlight", false);
 
 		build.pop().pop();
 	}
