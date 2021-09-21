@@ -3,6 +3,7 @@ package com.anthonyhilyard.spoiledeggs;
 import com.anthonyhilyard.iceberg.registry.AutoRegistry;
 import com.anthonyhilyard.spoiledeggs.entity.EntityRegistry;
 import com.anthonyhilyard.spoiledeggs.item.ItemRegistry;
+import com.anthonyhilyard.spoiledeggs.renderer.RendererRegistry;
 import com.anthonyhilyard.spoiledeggs.sound.SoundRegistry;
 
 import org.apache.logging.log4j.LogManager;
@@ -31,9 +32,14 @@ public class Loader
 
 		// Initialize the auto registry and the various registries.
 		AutoRegistry.init(MODID);
-		new ItemRegistry();
 		new EntityRegistry();
+		new ItemRegistry();
 		new SoundRegistry();
+
+		if (FMLEnvironment.dist == Dist.CLIENT)
+		{
+			new RendererRegistry();
+		}
 	}
 
 }

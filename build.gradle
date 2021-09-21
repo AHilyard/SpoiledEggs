@@ -40,7 +40,7 @@ repositories {
 dependencies {
 	minecraft "net.minecraftforge:forge:${project.mcVersion}-${project.forgeVersion}"
 
-	compile 'curse.maven:iceberg-520110:3447679'
+	compile 'curse.maven:iceberg-520110:3467865'
 }
 
 jar {

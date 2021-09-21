@@ -1,5 +1,6 @@
 {
 	"item.spoiledeggs.spoiled_egg": "Spoiled Egg",
+	"item.spoiledeggs.spawn_egg_zombie_chicken": "Zombie Chicken Spawn Egg",
 	"entity.spoiledeggs.zombie_chicken": "Zombie Chicken",
 	"subtitles.entity.zombie_chicken.ambient": "Zombie Chicken clucks",
 	"subtitles.entity.zombie_chicken.death": "Zombie Chicken dies",
